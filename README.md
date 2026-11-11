@@ -1,5 +1,7 @@
 # Kora FiveM Agent Skill
 
+**Version:** 1.0.0
+
 This repository packages the `kora-fivem-docs` Agent Skill for Codex, Claude,
 and Grok coding agents. It teaches agents how to use the current Kora FiveM
 documentation when creating resources or adapting existing resources for Kora.
