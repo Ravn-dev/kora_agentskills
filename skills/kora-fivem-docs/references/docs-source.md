@@ -34,24 +34,21 @@ repository for documentation before concluding that none exists.
 
 ## Select a local reference location
 
-At first use, offer the user these choices:
-
-1. **Shared local cache:** store the docs reference outside the project and
-   reuse it across tasks.
-2. **Agent working location:** store it wherever this agent normally keeps
-   task references, such as a project-local folder.
-
-Use the user's chosen path on later tasks when available. Do not put downloaded
-docs into the installed skill folder unless the user approves that addition.
+Use an existing user-selected cache if one is available. Otherwise keep the
+small reference in the agent's permitted task working location and continue.
+If reuse across tasks would be useful, offer a shared cache outside the project
+as an optional choice. Do not put downloaded docs into the installed skill
+folder unless the user approves that addition.
 
 ## Refresh and retrieve only relevant pages
 
 On each skill use, check the upstream default branch and refresh the local
 catalog and shared-guide index from `KoraFiveM/kora_docs_next` when network
-access is available. Also refresh a lightweight index of repositories in the
-`KoraFiveM` organization; the docs-site catalog is not exhaustive. Record repo
-name, description, default branch, and known documentation path when available,
-but do not download every repository's docs. Refresh cached resource pages from
+access is available. Search or refresh a lightweight index of `KoraFiveM`
+repositories when the catalog does not identify the relevant resource or its
+documentation; the catalog is not exhaustive. Record repo name, description,
+default branch, and known documentation path when available, but do not download
+every repository's docs. Refresh cached resource pages from
 their owning repositories using the version commit recorded in the catalog.
 Keep a small record of each source repository, commit SHA, and path with cached
 pages so the agent can identify which docs revision it consulted.
@@ -67,8 +64,8 @@ For a task:
 1. Read `catalog/resources.json` and identify relevant shared guides and
    resource IDs. Inspect the project's manifests, dependencies, and version
    declarations to select matching resource docs where possible.
-   Refresh or search the organization repository index as well, because the
-   catalog only covers resources registered to the docs site.
+   If the catalog does not resolve a resource, search the organization repository
+   index because the catalog only covers resources registered to the docs site.
 2. Fetch needed shared guides from `KoraFiveM/kora_docs_next`. For a resource,
    use its catalog entry to fetch the relevant files from the owning resource
    repository at the catalog-pinned commit for the selected version. Follow
@@ -87,6 +84,9 @@ For a task:
    possible. Use the default branch only when no matching released docs exist,
    and label that source as current or unreleased rather than a pinned release.
    Apply the same rule when the task explicitly concerns unreleased work.
+   If the project names a version absent from the catalog, use the same tag and
+   documentation search. Disclose any mismatch; do not present latest stable
+   documentation as verified for that installed version.
 5. When citing a fact, link to the actual source path in the owning repository.
    Use a commit-pinned GitHub URL when the exact commit is known. Cite shared
    guides from `KoraFiveM/kora_docs_next` and state the resource version when
@@ -106,3 +106,15 @@ the resource has no docs.
 Do not copy additional pages into the installed skill's `references/` folder
 until the user explicitly approves. An approved copy should retain its source
 repository path, resource version, and commit SHA so it can be refreshed later.
+
+## Examples of source selection
+
+- A project manifest identifies resource version `1.2.0`. Find that version in
+  the catalog, fetch the owning repository's docs at its recorded commit, and
+  cite a URL pinned to that commit. If `1.2.0` is absent, inspect the owning
+  repository's tags and state which revision supports the answer.
+- A resource is absent from the catalog. Search the organization repository
+  index for its owner, then inspect likely repositories for relevant docs. If
+  the repository is private, use a matching published snapshot only when one
+  exists and label it as a fallback. If network access is unavailable, identify
+  the local reference revision and disclose that it could not be refreshed.
