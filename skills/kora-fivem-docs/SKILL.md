@@ -1,6 +1,6 @@
 ---
 name: kora-fivem-docs
-description: Use Kora FiveM framework documentation when creating a FiveM resource for Kora, adapting an existing resource to work with Kora, or checking a resource's Kora API usage. This is for the KoraFiveM GTA/FiveM framework, not the unrelated Java/Kotlin Kora framework.
+description: Use KoraFiveM documentation to build or adapt FiveM resources and verify Kora API usage. Excludes the Java/Kotlin Kora framework.
 ---
 
 # Kora FiveM development
@@ -17,7 +17,10 @@ Follow [the docs source guide](references/docs-source.md) to select a local
 reference location, refresh its index, locate the relevant resource repository,
 and retrieve only the needed pages. Shared guides and the resource catalog are
 in `KoraFiveM/kora_docs_next`; each resource's documentation is owned by its
-own repository. Published website URLs can change.
+own repository. Published website URLs can change. The guide also covers
+version mismatches, missing catalog entries, inaccessible repositories, and
+offline use. No particular GitHub integration or API key is required; use an
+available retrieval method and report gaps when documentation cannot be reached.
 
 Read only the pages needed for the task. Prefer the latest stable version listed
 in the repository catalog unless the project identifies a specific installed
